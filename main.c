@@ -48,7 +48,7 @@ int32_t main(int argc, char *argv[]){
     fp = fopen(path, "rb");
 
     // ファイルの一時的な読みこみ先
-    int32_t tmp1 = 0, tmp2 = 0, tmp3 = 0, tmp4 = 0;
+    int32_t tmp[4] = {0};
 
     // bmpの初期化
     bmp_data data = {0};
@@ -85,20 +85,20 @@ int32_t main(int argc, char *argv[]){
     data.iheader.important_index_num = 0;
     
     // aviファイルから先頭4バイトを読み込み
-    fread(&tmp1, sizeof(int8_t), 1, fp);
-    fread(&tmp2, sizeof(int8_t), 1, fp);
-    fread(&tmp3, sizeof(int8_t), 1, fp);
-    fread(&tmp4, sizeof(int8_t), 1, fp);
+    fread(&tmp[0], sizeof(int8_t), 1, fp);
+    fread(&tmp[1], sizeof(int8_t), 1, fp);
+    fread(&tmp[2], sizeof(int8_t), 1, fp);
+    fread(&tmp[3], sizeof(int8_t), 1, fp);
 
     for(int32_t i = 0; i < 166; i++){	
     	// 16進数ダンプで"30 30 64 62" つまり 00db の文字列に当たるまでファイルを空読みする
-    	while(tmp1 != 48 || tmp2 != 48 || tmp3 != 100 || tmp4 != 98){
+    	while(tmp[0] != 48 || tmp[1] != 48 || tmp[2] != 100 || tmp[3] != 98){
     	
     		// さらに4バイト空読み
-    		fread(&tmp1, sizeof(int8_t), 1, fp);
-    		fread(&tmp2, sizeof(int8_t), 1, fp);
-    		fread(&tmp3, sizeof(int8_t), 1, fp);
-    		fread(&tmp4, sizeof(int8_t), 1, fp);
+    		fread(&tmp[0], sizeof(int8_t), 1, fp);
+    		fread(&tmp[1], sizeof(int8_t), 1, fp);
+    		fread(&tmp[2], sizeof(int8_t), 1, fp);
+    		fread(&tmp[3], sizeof(int8_t), 1, fp);
 
     	}
 
@@ -130,10 +130,10 @@ int32_t main(int argc, char *argv[]){
     	fclose(fw);
 
     	// 次のチャンクを探す
-    	fread(&tmp1, sizeof(int8_t), 1, fp);
-    	fread(&tmp2, sizeof(int8_t), 1, fp);
-    	fread(&tmp3, sizeof(int8_t), 1, fp);
-    	fread(&tmp4, sizeof(int8_t), 1, fp);
+    	fread(&tmp[0], sizeof(int8_t), 1, fp);
+    	fread(&tmp[1], sizeof(int8_t), 1, fp);
+    	fread(&tmp[2], sizeof(int8_t), 1, fp);
+    	fread(&tmp[3], sizeof(int8_t), 1, fp);
     }
 
     return 0;
