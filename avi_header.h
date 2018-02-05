@@ -21,4 +21,8 @@ typedef struct {
     uint32_t  dwReserved[4];
 } AVIMAINHEADER;
 
+// 関数プロトタイプ宣言
+void read_four_bytes(FILE **fp, uint8_t* save_location);
+void read_to_avi_header_struct(FILE **fp, AVIMAINHEADER* aviheader);
+
 #endif
