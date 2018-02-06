@@ -14,6 +14,7 @@ void read_to_avi_header_struct(FILE **fp, AVIMAINHEADER* aviheader){
 	// マイクロ秒単位でのfpsを読み込み
 	read_four_bytes(&*fp, aviheader->dwMicroSecPerFrame);
 
+	//いろいろ読み込み
 	fread(&aviheader->dwMaxBytesPerSec, sizeof(int32_t), 1, *fp);
     fread(&aviheader->dwPaddingGranularity, sizeof(int32_t), 1, *fp);
     fread(&aviheader->dwFlags, sizeof(int32_t), 1, *fp);
@@ -21,7 +22,7 @@ void read_to_avi_header_struct(FILE **fp, AVIMAINHEADER* aviheader){
     // 総フレーム数を読み込み
     read_four_bytes(&*fp, aviheader->dwTotalFrames);
 
-
+    // いろいろ読み込み
     fread(&aviheader->dwInitialFrames, sizeof(int32_t), 1, *fp);
     fread(&aviheader->dwStreams, sizeof(int32_t), 1, *fp);
     fread(&aviheader->dwSuggestedBufferSize, sizeof(int32_t), 1, *fp);
@@ -32,6 +33,7 @@ void read_to_avi_header_struct(FILE **fp, AVIMAINHEADER* aviheader){
     // 縦を読み込み
     read_four_bytes(&*fp, aviheader->dwHeight);
 
+    // 予約領域
     for(int32_t i = 0; i < 4; i++){
     	fread(&aviheader->dwReserved[i], sizeof(int32_t), 1, *fp);
     }
