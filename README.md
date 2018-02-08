@@ -32,8 +32,9 @@ aviファイルの任意の区間を連番bmpに
 
     $ git clone  https://github.com/kokeshing/avitobmp.git
     $ cd avitobmp
+    $ mkdir ./bmp/
     $ gcc main.c avi_lib.c bmp_lib.c
 
 ## 💩Author
 
-[@b4b4r07](https://twitter.com/)
+[@kokeshing_](https://twitter.com/kokeshing_)
