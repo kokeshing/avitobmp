@@ -36,4 +36,4 @@ aviファイルの任意の区間を連番bmpに
 
 ## 💩Author
 
-[@b4b4r07](https://twitter.com/)
+[@kokeshing_](https://twitter.com/kokeshing_)
